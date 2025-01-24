@@ -10,7 +10,7 @@ const jewelery = () => {
   });
   console.log(jewelery)
   return (
-    <div className="flex p-4 justify-center gap-8 flex-wrap h-[100vh]">
+    <div className="flex p-4 justify-center gap-8 flex-wrap">
       {jewelerydata.map((item) => {
         return <Singleproduct value={item} key={item.id - 0.5} />;
       })}

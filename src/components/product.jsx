@@ -18,7 +18,7 @@ const product = () => {
 
   const { cart, setCart } = useContext(cartContext);
   function addtocart(id) {
-    
+
     console.log(id);
     // if (id.quantity == 8) {
     //   return { ...id, quantity: id.quantity = 8 }
@@ -32,22 +32,22 @@ const product = () => {
     });
     console.log(matched);
     if (matched.length > 0) {
-      
-   if(matched[0].quantity<=7){
 
-     let obj = matched[0];
-     obj = { ...obj, quantity: obj.quantity + 1 };
-     setCart([...unmatch, obj])
-     localStorage.setItem("Cart", JSON.stringify([...unmatch, obj]))
-   }
+      if (matched[0].quantity <= 7) {
+
+        let obj = matched[0];
+        obj = { ...obj, quantity: obj.quantity + 1 };
+        setCart([...unmatch, obj])
+        localStorage.setItem("Cart", JSON.stringify([...unmatch, obj]))
+      }
 
 
-      
+
     } else {
       localStorage.setItem("Cart", JSON.stringify([...unmatch, { ...data[0], quantity: 1 }]))
-      setCart([...unmatch, {...data[0], quantity: 1 }])
+      setCart([...unmatch, { ...data[0], quantity: 1 }])
     }
-   
+
 
   }
   console.log(cart)
@@ -64,12 +64,12 @@ const product = () => {
             <div className="p-4  border flex flex-col w-full " key={item.id}>
               <img src={item.image} className="w-full h-[300px] object-contain pb-10" alt="" />
               <h1 className="whitespace-nowrap overflow-hidden text-ellipsis text-3xl">{item.title}</h1>
-              <h3 className='text-blue-700'>{`Price :- ${item.price}$`}</h3>
+              <h3 className='text-blue-700 font-semibold'>{`Price :- ${item.price}$`}</h3>
 
               <h2 className="font-normal flex flex-wrap ">Description :-{item.description}</h2>
 
-             
-                <button onClick={() => addtocart(item.id)} className="w-[60%] m-auto bg-orange-400 py-2 rounded-md mt-4">Add to cart</button>
+
+              <button onClick={() => addtocart(item.id)} className="w-[60%] m-auto bg-orange-400 py-2 rounded-md mt-4">Add to cart</button>
             </div>
           );
         })}

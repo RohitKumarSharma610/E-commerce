@@ -10,9 +10,9 @@ const men = () => {
   });
   console.log("men's clothing")
   return (
-    <div className="flex p-4 justify-center gap-8 flex-wrap  h-[100vh]">
+    <div className="flex p-4 justify-center gap-8 flex-wrap ">
       {mendata.map((item) => {
-        return <Singleproduct value={item} key={item.id - 0.5} />;
+        return <Singleproduct value={item} key={item.id} />;
       })}
     </div>
   );

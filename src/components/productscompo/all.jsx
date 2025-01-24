@@ -9,7 +9,7 @@ const all = () => {
   // console.log(Singleproduct);
 
   return (
-    <div className="flex p-4 justify-center gap-8 flex-wrap">
+    <div className="flex p-4 justify-center gap-8 flex-wrap ">
       {a.map((item) => {
         // console.log(item)
         
