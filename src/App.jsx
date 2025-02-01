@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import { productstore } from "./contextstore/producscontext"
 import { cartContext, CartContextpovider } from "./contextstore/cartcontext";
 import Headroom from "react-headroom"
-import Loader from "./components/message's/homeloader";
+import { Wishcontextprovider } from "./contextstore/wishcontext";
 
 
 const App = () => {
@@ -17,12 +17,12 @@ const App = () => {
   useEffect(() => {
 
     async function fetchdata() {
-     
-        let response = await fetch("https://fakestoreapi.com/products");
-        let data2 = await response.json();
-        console.log(data2);
-        setData(data2);
-      
+
+      let response = await fetch("https://fakestoreapi.com/products");
+      let data2 = await response.json();
+      console.log(data2);
+      setData(data2);
+
     }
     fetchdata();
   }, []);
@@ -34,14 +34,17 @@ const App = () => {
   });
 
   return (
+
     <CartContextpovider>
-      <productstore.Provider value={data}>
-        < Headroom>
-          <Navbar />
-        </Headroom>
-        <Outlet />
-        <Footer />
-      </productstore.Provider>
+      <Wishcontextprovider>
+        <productstore.Provider value={data}>
+          < Headroom>
+            <Navbar />
+          </Headroom>
+          <Outlet />
+          <Footer />
+        </productstore.Provider>
+      </Wishcontextprovider>
     </CartContextpovider>
   );
 };

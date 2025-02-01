@@ -13,6 +13,7 @@ import Electronics from "./components/productscompo/electronics.jsx";
 import Jewelery from "./components/productscompo/jewelery.jsx";
 import Men from "./components/productscompo/men's clothes.jsx";
 import Women from "./components/productscompo/women's clothes.jsx";
+import Wishlist from "./components/productscompo/wishlist.jsx";
 import {
   Route,
   RouterProvider,
@@ -37,6 +38,7 @@ let routerr = createBrowserRouter(
       <Route path="services" element={<Services />} />
       <Route path="product/:id" element={<Product />} />
       <Route path="cart" element={<Cart />} />
+      <Route path="wishlist" element={<Wishlist/>}/>
     </Route>
   )
 );

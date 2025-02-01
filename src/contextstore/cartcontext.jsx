@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-export const cartContext = createContext();
+export const cartContext = createContext([]);
 
 export const CartContextpovider = function ({children}){
             

@@ -1,14 +1,19 @@
 import React, { createContext, useState } from 'react'
 
 
-export const wishcontext = createContext()
-export const wishcontextprovider = ({childern}) => {
-    const [wish ,setWish] = useState([])
-  
+export const wishContext = createContext([])
+
+export const Wishcontextprovider = function ({children}){
+    const [wish ,setWish] = useState(localStorage.getItem("Wish")?JSON.parse(localStorage.getItem("Wish")):[])
+
+    console.log(wish)
+      localStorage.setItem("Wish" ,JSON.stringify(wish))
+
+
     return (
-    <wishcontext.Provider value={{wish ,setWish}}>
-        {childern}
-    </wishcontext.Provider>
+    <wishContext.Provider value={{wish ,setWish}}>
+        {children} 
+    </wishContext.Provider>
   )
 
 }
