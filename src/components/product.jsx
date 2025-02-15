@@ -16,9 +16,9 @@ const product = () => {
 
   const { wish, setWish } = useContext(wishContext)
   const productid = useParams();
-  let data = useContext(productstore)
+  let data2 = useContext(productstore)
 
-  data = data.filter((item) => {
+   let  data = data2.filter((item) => {
     return item.id == productid.id
   })
 
@@ -91,8 +91,15 @@ const product = () => {
 
   }
 
+  let newdata = []  ;
 
+  for( let i = 0 ; i<8 ; i++){
+        let random = Math.floor(Math.random()*10);
+        console.log(random)
+         newdata[i] =  data2[random]
+  }
 
+  console.log(newdata)
 
 
   return (
@@ -117,6 +124,25 @@ const product = () => {
           );
         })}
       </div>
+  
+       <div>
+        {
+           
+          //  newdata.map((item)=>{
+          //    return <>
+          //       {
+          //          console.log(item.id)
+          //       }
+          //     </>
+               
+          //  })
+
+       
+        }
+       </div>
+
+
+
     </div >
   )
 }
