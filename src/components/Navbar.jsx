@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaCartShopping } from "react-icons/fa6";
 import { cartContext } from '../contextstore/cartcontext';
@@ -11,6 +11,7 @@ import { FaHandsHelping } from "react-icons/fa";
 
 
 const Navbar = () => {
+  let divref = useRef()
 
   let { cart, setCart } = useContext(cartContext)
 
@@ -21,6 +22,9 @@ const Navbar = () => {
   }, 0)
   console.log(cart)
 
+  window.onscroll = ()=>{
+    divref.current.parentElement.click()
+  }
 
 
   return (
@@ -38,7 +42,7 @@ const Navbar = () => {
           <div className='flex gap-1  '>
             All products < IoMdArrowDropdown className=' text-xl mt-1 items-center  group-hover:rotate-180 transition-all duration-200' />
           </div>
-          <div className='bg-white text-blue-600  absolute z-50 rounded-md hidden  group-hover:block  border border-black  mt-1 '>
+          <div ref={divref} className='bg-white text-blue-600  absolute z-50 rounded-md hidden  group-hover:block  border border-black  mt-1'  >
             <ul className='flex flex-col'  >
               <NavLink to="" className={({ isActive }) =>
                 isActive ? "bg-blue-600 text-white  px-3 py-1 rounded-md" : "hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md"
@@ -62,7 +66,7 @@ const Navbar = () => {
       </div>
 
 
-      <div className=' relative top-[100vh] w-full  sm:w-[300px] bg-blue-500 sm:static sm:m-auto border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
+      <div className=' relative top-[95vh] w-full  sm:w-[300px] bg-blue-500 sm:static sm:m-auto border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
 
         <ul className="flex justify-between p-1 sm:justify-center items-center flex-wrap gap-1 text-white text-sm sm:text-base m-auto">
           <NavLink

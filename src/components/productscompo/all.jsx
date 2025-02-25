@@ -13,7 +13,7 @@ const all = () => {
   return (
     <>
      <Hero/>
-    <div className="flex justify-center gap-8 flex-wrap ">
+    <div className="flex justify-center gap-8 flex-wrap my-8 ">
       {a.map((item) => {
         // console.log(item)
         

@@ -27,7 +27,7 @@ let routerr = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<Navigate to="products/all" replace />} />
-      <Route path="products/" element={<Home />}>
+       <Route path="products/" element={<Home />}>
         <Route path="all" element={<All />} />
         <Route path="electronics" element={<Electronics />} />
         <Route path="jewelery" element={<Jewelery />} />
@@ -38,7 +38,7 @@ let routerr = createBrowserRouter(
       <Route path="services" element={<Services />} />
       <Route path="product/:id" element={<Product />} />
       <Route path="cart" element={<Cart />} />
-      <Route path="wishlist" element={<Wishlist/>}/>
+      <Route path="wishlist" element={<Wishlist />} />
     </Route>
   )
 );

@@ -60,9 +60,7 @@ const product = () => {
 
 
   function addtocart(id) {
-
     console.log(id);
-
     let matched = cart.filter((item) => {
       console.log(cart)
       return item.id == id;
@@ -70,7 +68,9 @@ const product = () => {
     let unmatch = cart.filter((item) => {
       return item.id != id;
     });
+
     console.log(matched);
+
     if (matched.length > 0) {
 
       if (matched[0].quantity <= 7) {
@@ -80,9 +80,6 @@ const product = () => {
         setCart([...unmatch, obj])
         localStorage.setItem("Cart", JSON.stringify([...unmatch, obj]))
       }
-
-
-
     } else {
       localStorage.setItem("Cart", JSON.stringify([...unmatch, { ...data[0], quantity: 1 }]))
       setCart([...unmatch, { ...data[0], quantity: 1 }])
@@ -95,11 +92,11 @@ const product = () => {
 
   for( let i = 0 ; i<8 ; i++){
         let random = Math.floor(Math.random()*10);
-        console.log(random)
+        // console.log(random)
          newdata[i] =  data2[random]
   }
 
-  console.log(newdata)
+  // console.log(newdata)
 
 
   return (
@@ -125,21 +122,21 @@ const product = () => {
         })}
       </div>
   
-       <div>
+       {/* <div >
         {
            
-          //  newdata.map((item)=>{
-          //    return <>
-          //       {
-          //          console.log(item.id)
-          //       }
-          //     </>
+           newdata.map((item)=>{
+             return <>
+                {
+                   console.log(item)
+                }
+              </>
                
-          //  })
+           })
 
        
         }
-       </div>
+       </div> */}
 
 
 
