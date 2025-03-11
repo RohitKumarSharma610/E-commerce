@@ -91,7 +91,7 @@ const product = () => {
   let newdata = []  ;
 
   for( let i = 0 ; i<8 ; i++){
-        let random = Math.floor(Math.random()*10);
+        let random = Math.floor(Math.random()*20);
         // console.log(random)
          newdata[i] =  data2[random]
   }
@@ -121,26 +121,46 @@ const product = () => {
           );
         })}
       </div>
+         <h1 className="text-3xl font-bold text-center">Top Rated Product's</h1>
   
-       {/* <div >
+       <div  className=" flex flex-wrap justify-evenly gap-4 my-7" >
         {
            
            newdata.map((item)=>{
-             return <>
-                {
-                   console.log(item)
-                }
-              </>
+             return (
+              
+
+              <NavLink to={`/product/${item?.id}`}>
+                      <div className="flex flex-wrap hover:scale-105 hover:transition-all relative p-4 w-28 sm:w-40  border border-gray-300 rounded-lg whitespace-nowrap overflow-hidden text-ellipsis shadow-md hover:shadow-lg transition-shadow duration-200 " key={item?.id}>
+                        <div><h1>{`id : ${item?.id}`}</h1></div>
+                        <div className="">
+                             
+                          <img
+                            src={item?.image}
+                            className="w-full  sm:h-[180px] aspect-[1/1.3] sm:aspect-[1/1] duration-200 overflow-hidden"
+                            alt=" img..."
+                            />
+                        </div>
+                        <h2 className="whitespace-nowrap overflow-hidden text-ellipsis mt-3">
+                          {item?.title}
+                        </h2>
+                        <h3>{`Price : ${item?.price}$`}</h3>
+              
+              
+                      </div>
+                    </NavLink>
+      
+             )
                
            })
 
        
         }
-       </div> */}
+       </div>
 
 
 
-    </div >
+</div >
   )
 }
 

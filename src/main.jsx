@@ -14,6 +14,8 @@ import Jewelery from "./components/productscompo/jewelery.jsx";
 import Men from "./components/productscompo/men's clothes.jsx";
 import Women from "./components/productscompo/women's clothes.jsx";
 import Wishlist from "./components/productscompo/wishlist.jsx";
+import Example from "./components/hero message/notfound.jsx";
+import Search from "./components/productscompo/search.jsx";
 import {
   Route,
   RouterProvider,
@@ -35,10 +37,12 @@ let routerr = createBrowserRouter(
         <Route path="women's clothing" element={<Women />} />
       </Route>
       <Route path="about" element={<About />} />
+      <Route path="search" element={<Search />} />
       <Route path="services" element={<Services />} />
       <Route path="product/:id" element={<Product />} />
       <Route path="cart" element={<Cart />} />
       <Route path="wishlist" element={<Wishlist />} />
+      <Route path="*" element={<Example/>}/>
     </Route>
   )
 );

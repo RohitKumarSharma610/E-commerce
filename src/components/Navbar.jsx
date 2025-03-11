@@ -8,12 +8,15 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { FcAbout } from "react-icons/fc";
 import { FaHandsHelping } from "react-icons/fa";
-
+import Search from './productscompo/search';
+import { productstore } from '../contextstore/producscontext';
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
   let divref = useRef()
 
   let { cart, setCart } = useContext(cartContext)
+  const data = useContext(productstore)
 
   let point = cart.reduce((total, curr) => {
     console.log(total)
@@ -22,13 +25,17 @@ const Navbar = () => {
   }, 0)
   console.log(cart)
 
-  window.onscroll = ()=>{
+  window.onscroll = () => {
     divref.current.parentElement.click()
   }
 
+  
+  
+
+
 
   return (
-    <div className="flex flex-wrap justify-between items-center p-3 bg-blue-600 h-16 sm:h-full shadow-md">
+    <div className="flex flex-wrap justify-between items-center p-3 bg-blue-600 h-24 sm:h-full shadow-md">
       <div className="flex items-center gap-2 m-auto">
         <span className="text-3xl text-white"><FaShopify /></span>
         <span className="text-xl font-bold text-white mr-4 ">ShopON</span>
@@ -65,6 +72,13 @@ const Navbar = () => {
 
       </div>
 
+
+      <div className='text-white flex  justify-center gap-3 w-20 m-auto rounded-md bg-blue-900 mt-3 sm:mt-auto hover:bg-blue-950' >
+      <NavLink to="/search">
+       Search
+       
+      </NavLink>
+      </div>
 
       <div className=' relative top-[95vh] w-full  sm:w-[300px] bg-blue-500 sm:static sm:m-auto border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
 
@@ -103,7 +117,7 @@ const Navbar = () => {
               isActive ? "relative bg-white text-black  px-3 py-1 rounded-md text-2xl" : "relative hover:bg-white text-2xl hover:text-black px-3 py-1 rounded-md"
             } title="Cart"
           >
-            <span className="absolute -top-1 -right-2 w-5 h-5 text-xs rounded-full bg-red-500 text-white flex items-center justify-center">
+            <span className="absolute z-10 -top-1 -right-2 w-5 h-5 text-xs rounded-full bg-red-500 text-white flex items-center justify-center">
               {point}
             </span>
             <FaCartShopping className="text-xl sm:text-2xl font-semibold" />
@@ -113,7 +127,7 @@ const Navbar = () => {
           <NavLink
             to="/wishlist"
             className={({ isActive }) =>
-              isActive ? "relative bg-white text-black  px-3 py-1 rounded-md text-2xl" : "relative hover:bg-blue-500 text-2xl hover:text-black px-3 py-1 rounded-md"
+              isActive ? "relative bg-white text-black  px-3 py-1 rounded-md text-2xl" : "relative hover:bg-white text-2xl hover:text-black px-2 py-1 rounded-md"
             } title='Wishlist'
           >
             <span className='flex gap-1 justify-center items-center rounded-lg px-1  hover:scale-105 duration-200 text-red-700' ><FaRegHeart className="text-xl " /></span>

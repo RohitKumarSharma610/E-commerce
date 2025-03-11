@@ -7,7 +7,7 @@ import Hero from "../hero message/heroslider";
 
 const all = () => {
   let a = useContext(productstore);
-  console.log(a);
+  // console.log(a);
   // console.log(Singleproduct);
 
   return (

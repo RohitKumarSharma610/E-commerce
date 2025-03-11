@@ -20,7 +20,7 @@ const App = () => {
 
       let response = await fetch("https://fakestoreapi.com/products");
       let data2 = await response.json();
-      console.log(data2);
+      // console.log(data2);
       setData(data2);
 
     }
