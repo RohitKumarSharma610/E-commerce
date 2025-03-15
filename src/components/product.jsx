@@ -108,7 +108,7 @@ const product = () => {
           return (
             <div className="p-4  border flex flex-col w-full relative" key={Math.random()*Math.random()}>
               <img src={item.image} className="w-full h-[300px] object-contain pb-10" alt="" />
-              <div className="hover:scale-105 transition-all absolute top-[25px] right-6 flex justify-center items-center bg-black text-white h-8 w-8 rounded-[50%] border border-black" onClick={() => addwish(item.id)}>{isinfav ? <FaHeart className="text-red-500" /> : <FaRegHeart className="text-xl" />}
+              <div className="hover:scale-105 transition-all absolute top-[25px] right-6 flex justify-center items-center bg-black text-white h-8 w-8 rounded-[50%] border border-black" onClick={() => addwish(item.id)}>{isinfav ? <FaHeart className="text-red-500" /> : <FaRegHeart className=" text-xl" />}
               </div>
               <h1 className="whitespace-nowrap overflow-hidden text-ellipsis text-3xl">{item.title}</h1>
               <h3 className='text-blue-700 font-semibold'>{`Price :- ${item.price}$`}</h3>
@@ -116,7 +116,7 @@ const product = () => {
               <h2 className="font-normal flex flex-wrap ">Description :-{item.description}</h2>
 
 
-              <button onClick={() => addtocart(item.id)} className="w-[60%] m-auto bg-orange-400 py-2 rounded-md mt-4">Add to cart</button>
+              <button onClick={() => addtocart(item.id)} className="w-[60%] m-auto bg-orange-400 hover:bg-orange-500 hover:scale-105 duration-300 py-2 rounded-md mt-4">Add to cart</button>
             </div>
           );
         })}

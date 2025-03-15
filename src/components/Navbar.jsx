@@ -80,9 +80,9 @@ const Navbar = () => {
       </NavLink>
       </div>
 
-      <div className=' relative top-[95vh] w-full  sm:w-[300px] bg-blue-500 sm:static sm:m-auto border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
+      <div className=' relative top-[96vh] w-full  sm:w-[300px] bg-blue-500 sm:static sm:m-auto border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
 
-        <ul className="flex justify-between p-1 sm:justify-center items-center flex-wrap gap-1 text-white text-sm sm:text-base m-auto">
+        <ul className="h-14 flex justify-between p-1 sm:justify-center items-center flex-wrap gap-1 text-white text-sm sm:text-base m-auto">
           <NavLink
             to=""
             className={({ isActive }) =>
