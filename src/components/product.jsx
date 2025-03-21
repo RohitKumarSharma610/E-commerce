@@ -96,6 +96,10 @@ const product = () => {
          newdata[i] =  data2[random]
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [newdata]);
+
   // console.log(newdata)
 
 

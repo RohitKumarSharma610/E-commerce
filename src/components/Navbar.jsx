@@ -35,8 +35,8 @@ const Navbar = () => {
 
 
   return (
-    <div className="flex flex-wrap justify-between items-center p-3 bg-blue-600 h-24 sm:h-full shadow-md">
-      <div className="flex items-center gap-2 m-auto">
+    <div className="flex flex-wrap justify-between items-center p-2 bg-blue-600  shadow-md">
+      <div className="flex items-center m-auto mb-3">
         <span className="text-3xl text-white"><FaShopify /></span>
         <span className="text-xl font-bold text-white mr-4 ">ShopON</span>
 
@@ -73,16 +73,16 @@ const Navbar = () => {
       </div>
 
 
-      <div className='text-white flex  justify-center gap-3 w-20 m-auto rounded-md bg-blue-900 mt-3 sm:mt-auto hover:bg-blue-950' >
+      <div className='text-white absolute left-[35%] top-[35%] w-28  rounded-md bg-blue-900  hover:bg-blue-950 text-center' >
       <NavLink to="/search">
        Search
        
       </NavLink>
       </div>
 
-      <div className=' relative top-[96vh] w-full  sm:w-[300px] bg-blue-500 sm:static sm:m-auto border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
+      <div className=' w-full  sm:w-[300px] bg-blue-500 sm:static sm:m-auto border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
 
-        <ul className="h-14 flex justify-between p-1 sm:justify-center items-center flex-wrap gap-1 text-white text-sm sm:text-base m-auto">
+        <ul className=" h-14 flex justify-between p-1 sm:justify-center items-center flex-wrap gap-1 text-white text-sm sm:text-base m-auto">
           <NavLink
             to=""
             className={({ isActive }) =>

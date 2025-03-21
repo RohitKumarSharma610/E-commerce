@@ -39,15 +39,14 @@ const Search = () => {
         />
       </div>
       <div className="flex p-4 justify-center gap-8 flex-wrap">
-        {searchQuery.length > 0 ? (
-          searchshow.length > 0 ? (
+        {searchQuery.length > 0 ? (  searchshow.length > 0 ? (
             searchshow.map((item) => (
               <Singleproduct value={item} key={item.id} />
             ))
           ) : (
-            <div className="h-[70vh] w-[100vw] flex justify-center items-center">
+            <div className="h-[70vh] w-[100vw] flex justify-center ">
 
-            <h1 className="text-3xl font-bold">Data Not Found</h1>
+            <h1 className="text-3xl font-bold mt-5">Data Not Found</h1>
             </div>
           )
         ) : (
