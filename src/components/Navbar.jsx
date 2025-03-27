@@ -18,18 +18,28 @@ const Navbar = () => {
   let { cart, setCart } = useContext(cartContext)
   const data = useContext(productstore)
 
-  let point = cart.reduce((total, curr) => {
-    console.log(total)
-    console.log(curr)
-    return total + curr.quantity
-  }, 0)
-  console.log(cart)
+  // let point = cart.reduce((total, curr) => {
+  //   console.log(total)
+  //   console.log(curr)
+  //   return total + curr.quantity
+  // }, 0)
+  // console.log(cart)
+
+  let point = cart.length
 
   window.onscroll = () => {
     divref.current.parentElement.click()
   }
 
   
+  const divRef = useRef(null);
+  
+
+    function none  () {
+      if (divRef.current) {
+        divRef.current.style.display = "none"; // Hide the div
+      }
+    };
   
 
 
@@ -49,7 +59,7 @@ const Navbar = () => {
           <div className='flex gap-1  '>
             All products < IoMdArrowDropdown className=' text-xl mt-1 items-center  group-hover:rotate-180 transition-all duration-200' />
           </div>
-          <div ref={divref} className='bg-white text-blue-600  absolute z-50 rounded-md hidden  group-hover:block  border border-black  mt-1'  >
+          <div ref={divref} onClick={none} className='bg-white text-blue-600  absolute z-50 rounded-md hidden  group-hover:block  border border-black  mt-1'  >
             <ul className='flex flex-col'  >
               <NavLink to="" className={({ isActive }) =>
                 isActive ? "bg-blue-600 text-white  px-3 py-1 rounded-md" : "hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md"
