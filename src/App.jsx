@@ -9,6 +9,8 @@ import { productstore } from "./contextstore/producscontext"
 import { cartContext, CartContextpovider } from "./contextstore/cartcontext";
 import Headroom from "react-headroom"
 import { Wishcontextprovider } from "./contextstore/wishcontext";
+import { Recentviewproduct } from "./contextstore/recentviewproduct.jsx";
+
 
 
 const App = () => {
@@ -37,6 +39,7 @@ const App = () => {
 
     <CartContextpovider>
       <Wishcontextprovider>
+        <Recentviewproduct>
         <productstore.Provider value={data}>
           < Headroom>
             <Navbar />
@@ -44,6 +47,7 @@ const App = () => {
           <Outlet />
           <Footer />
         </productstore.Provider>
+        </Recentviewproduct>
       </Wishcontextprovider>
     </CartContextpovider>
   );

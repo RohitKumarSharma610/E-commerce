@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Recentviewdata } from "../../contextstore/recentviewproduct";
 
 
 const singleproduct = ({ value }) => {
-  // console.log(!value)
-
-
+  // console.log(value)
+  
+ const { addToRecent } = useContext(Recentviewdata);
  
 
 
@@ -15,7 +16,7 @@ const singleproduct = ({ value }) => {
     <>
 
 
-      <NavLink to={`/product/${value.id}`}>
+      <NavLink to={`/product/${value.id}`} onClick={()=>addToRecent(value)} >
         <div className="hover:scale-105 hover:transition-all relative p-4 w-32 sm:w-72  border border-gray-300 rounded-lg whitespace-nowrap overflow-hidden text-ellipsis shadow-md hover:shadow-lg transition-shadow duration-200 " key={value.id}>
           <div><h1>{`id : ${value.id}`}</h1></div>
           <div className="">

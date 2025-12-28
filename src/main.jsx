@@ -23,7 +23,7 @@ import {
   createRoutesFromElements,
   Navigate
 } from "react-router-dom";
-
+import Recentviewproducts from "./components/productscompo/recentviewproducts.jsx";
 
 let routerr = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +36,7 @@ let routerr = createBrowserRouter(
         <Route path="men's clothing" element={<Men />} />
         <Route path="women's clothing" element={<Women />} />
       </Route>
+        <Route path="recent-view-products" element={<Recentviewproducts />} />
       <Route path="about" element={<About />} />
       <Route path="search" element={<Search />} />
       <Route path="services" element={<Services />} />

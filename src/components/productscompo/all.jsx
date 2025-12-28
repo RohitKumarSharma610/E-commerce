@@ -17,7 +17,7 @@ const all = () => {
       {a.map((item) => {
         // console.log(item)
         
-        return <Singleproduct value={item} key={item.id - 0.5} />;
+        return <Singleproduct value={item} key={item.id} />;
       })}
     </div>
       </>

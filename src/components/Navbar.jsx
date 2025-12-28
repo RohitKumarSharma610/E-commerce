@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaCartShopping } from "react-icons/fa6";
 import { cartContext } from '../contextstore/cartcontext';
@@ -27,70 +27,140 @@ const Navbar = () => {
 
   let point = cart.length
 
-  window.onscroll = () => {
-    divref.current.parentElement.click()
-  }
+  // window.onscroll = () => {
+  //   divref.current.parentElement.click()
+  // }
 
-  
+  const [isVisible, setIsVisible] = useState(false);
   const divRef = useRef(null);
-  
 
-    function none  () {
-      if (divRef.current) {
-        divRef.current.style.display = "none"; // Hide the div
-      }
-    };
-  
+  const toggleDropdown = () => {
+    setIsVisible((prev) => !prev);
+  };
+
+  // Hide dropdown when clicking a link
+  const hideDropdown = () => {
+    setIsVisible(false);
+  };
+
+
+
+
 
 
 
   return (
     <div className="flex flex-wrap justify-between items-center p-2 bg-blue-600  shadow-md">
-      <div className="flex items-center m-auto mb-3">
-        <span className="text-3xl text-white"><FaShopify /></span>
-        <span className="text-xl font-bold text-white mr-4 ">ShopON</span>
+      <div className="flex items-center">
+        <NavLink to="">
+          <div className='flex'>
 
-
-        <div
-
-          className="  bg-blue-600 text-white  px-3 py-1 rounded-md group"
-
-        >
-          <div className='flex gap-1  '>
-            All products < IoMdArrowDropdown className=' text-xl mt-1 items-center  group-hover:rotate-180 transition-all duration-200' />
+            <span className="text-3xl text-white"><FaShopify /></span>
+            <span className="text-xl font-bold text-white mr-4 ">ShopON</span>
           </div>
-          <div ref={divref} onClick={none} className='bg-white text-blue-600  absolute z-50 rounded-md hidden  group-hover:block  border border-black  mt-1'  >
-            <ul className='flex flex-col'  >
-              <NavLink to="" className={({ isActive }) =>
-                isActive ? "bg-blue-600 text-white  px-3 py-1 rounded-md" : "hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md"
-              }>All Product</NavLink>
-              <NavLink to="products/men's clothing" className={({ isActive }) =>
-                isActive ? "bg-blue-600 text-white  px-3 py-1 rounded-md" : "hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md"
-              } >Mens Wear</NavLink>
-              <NavLink to="products/women's clothing" className={({ isActive }) =>
-                isActive ? "bg-blue-600 text-white  px-3 py-1 rounded-md" : "hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md"
-              }>Womens Wear </NavLink>
-              <NavLink to="products/electronics" className={({ isActive }) =>
-                isActive ? "bg-blue-600 text-white  px-3 py-1 rounded-md" : "hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md"
-              }>Electronics </NavLink>
-              <NavLink to="products/jewelery" className={({ isActive }) =>
-                isActive ? "bg-blue-600 text-white  px-3 py-1 rounded-md" : "hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md"
-              }>Jewelery </NavLink>
-            </ul>
+        </NavLink>
+        <div
+          className="  bg-blue-600 text-white  px-3 py-1 rounded-md group">
+          <div className="relative group inline-block">
+            {/* Dropdown Toggle Button */}
+            <div className="relative w-[180px]">
+              {/* Dropdown Toggle Button */}
+              <div
+                className="flex gap-1 cursor-pointer items-center"
+                onClick={toggleDropdown}
+              >
+                All Products{" "}
+                <IoMdArrowDropdown
+                  className={`text-xl mt-1 transition-all duration-200 ${isVisible ? "rotate-180" : "rotate-0"
+                    }`}
+                />
+              </div>
+
+              {/* Dropdown Menu */}
+              {isVisible && (
+                <div
+                  ref={divRef}
+                  className="bg-white text-blue-600 absolute z-50 rounded-md border border-black mt-1 shadow-lg"
+                >
+                  <ul className="flex flex-col" onClick={hideDropdown}>
+                    <NavLink
+                      to=""
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-blue-600 text-white px-3 py-1 rounded-md"
+                          : "hover:bg-blue-500 hover:text-white px-3 py-1 rounded-md"
+                      }
+                    >
+                      All Product
+                    </NavLink>
+                    <NavLink
+                      to="products/men's clothing"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-blue-600 text-white px-3 py-1 rounded-md"
+                          : "hover:bg-blue-500 hover:text-white px-3 py-1 rounded-md"
+                      }
+                    >
+                      Men's Wear
+                    </NavLink>
+                    <NavLink
+                      to="products/women's clothing"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-blue-600 text-white px-3 py-1 rounded-md"
+                          : "hover:bg-blue-500 hover:text-white px-3 py-1 rounded-md"
+                      }
+                    >
+                      Women's Wear
+                    </NavLink>
+                    <NavLink
+                      to="products/electronics"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-blue-600 text-white px-3 py-1 rounded-md"
+                          : "hover:bg-blue-500 hover:text-white px-3 py-1 rounded-md"
+                      }
+                    >
+                      Electronics
+                    </NavLink>
+                    <NavLink
+                      to="products/jewelery"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-blue-600 text-white px-3 py-1 rounded-md"
+                          : "hover:bg-blue-500 hover:text-white px-3 py-1 rounded-md"
+                      }
+                    >
+                      Jewelry
+                    </NavLink>
+                     <NavLink
+                      to="recent-view-products"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "bg-blue-600 text-white px-3 py-1 rounded-md"
+                          : "hover:bg-blue-500 hover:text-white px-3 py-1 rounded-md"
+                      }
+                    >
+                      Recent View Products
+                    </NavLink>
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
       </div>
 
 
-      <div className='text-white absolute left-[35%] top-[35%] w-28  rounded-md bg-blue-900  hover:bg-blue-950 text-center' >
-      <NavLink to="/search">
-       Search
-       
-      </NavLink>
+      <div className='text-white px-8 py-2  rounded-md bg-blue-900  hover:bg-blue-950 text-center' >
+        <NavLink to="/search">
+          Search
+
+        </NavLink>
       </div>
 
-      <div className=' w-full  sm:w-[300px] bg-blue-500 sm:static sm:m-auto border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
+      <div className=' w-full  sm:w-[300px] bg-blue-500 sm:static  border border-black sm:p-1 rounded-md sm:shadow-md sm:shadow-black '>
 
         <ul className=" h-14 flex justify-between p-1 sm:justify-center items-center flex-wrap gap-1 text-white text-sm sm:text-base m-auto">
           <NavLink

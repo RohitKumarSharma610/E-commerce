@@ -7,6 +7,8 @@ import { FaRegHeart } from "react-icons/fa";
 import { wishContext } from "../contextstore/wishcontext";
 import { FaHeart } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
+import { Recentviewdata } from "../contextstore/recentviewproduct"
+
 
 // import { WishContext } from "../contextstore/wishcontext";
 
@@ -92,87 +94,112 @@ const product = () => {
 
   }
 
-  let newdata = [];
+  const currentProduct = data[0];
 
-  for (let i = 0; i < 8; i++) {
-    let random = Math.floor(Math.random() * 20);
-    // console.log(random)
-    newdata[i] = data2[random]
-  }
+  const newdata = data2.filter(
+    item => item.category === currentProduct.category && item.id !== currentProduct.id
+  );
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [newdata]);
+  const { recentForUI } = useContext(Recentviewdata);
 
-  // console.log(newdata)
+  if (recentForUI.length === 0) return null;
+
+  console.log(data[0]?.category, newdata, data2.id)
 
 
   return (
     <>
-    <div>
-      <ToastContainer position="top-center" autoClose={700} />
-      <NavLink to='/' ><IoArrowBackOutline className='text-5xl font-medium  mt-2' /></NavLink>
-      <div className="flex p-4 justify-center gap-3 flex-wrap static bottom-0 ">
-        {data.map((item) => {
-          console.log(item)
-          return (
-            <div className="p-4  border flex flex-col w-full relative" key={Math.random() * Math.random()}>
-              <img src={item.image} className="w-full h-[300px] object-contain pb-10" alt="" />
-              <div className="hover:scale-105 transition-all absolute top-[25px] right-6 flex justify-center items-center bg-black text-white h-8 w-8 rounded-[50%] border border-black" onClick={() => addwish(item.id)}>{isinfav ? <FaHeart className="text-red-500" /> : <FaRegHeart className=" text-xl" />}
-              </div>
-              <h1 className="whitespace-nowrap overflow-hidden text-ellipsis text-3xl">{item.title}</h1>
-              <h3 className='text-blue-700 font-semibold'>{`Price :- ${item.price}$`}</h3>
-
-              <h2 className="font-normal flex flex-wrap ">Description :-{item.description}</h2>
-
-
-              <button onClick={() => addtocart(item.id)} className="w-[60%] m-auto bg-orange-400 hover:bg-orange-500 hover:scale-105 duration-300 py-2 rounded-md mt-4">Add to cart</button>
-            </div>
-          );
-        })}
-      </div>
-      <h1 className="text-3xl font-bold text-center">Top Rated Product's</h1>
-
-      <div className=" flex flex-wrap justify-evenly gap-4 my-7">
-        {
-
-          newdata.map((item) => {
+      <div>
+        <ToastContainer position="top-center" autoClose={700} />
+        <NavLink to='/' ><IoArrowBackOutline className='text-5xl font-medium  mt-2' /></NavLink>
+        <div className="flex p-4 justify-center gap-3 flex-wrap static bottom-0 ">
+          {data.map((item) => {
+            console.log(item)
             return (
-
-
-              <NavLink to={`/product/${item?.id}`} >
-                <div className="flex flex-wrap hover:scale-105 hover:transition-all relative p-2 w-28 sm:w-40  border border-gray-300 rounded-lg whitespace-nowrap overflow-hidden text-ellipsis shadow-md hover:shadow-lg transition-shadow duration-200 " key={item?.id}>
-                  {/* <div><h1>{`id : ${item?.id}`}</h1></div> */}
-                  <div className="">
-
-                    <img
-                      src={item?.image}
-                      className="w-full   aspect-[1/1] sm:aspect-[1/1] duration-200 overflow-hidden"
-                      alt=" img..."
-                      key={Date.now()}
-                      />
-                  </div>
-                  <h2 className="whitespace-nowrap overflow-hidden text-ellipsis mt-3">
-                    {item?.title}
-                  </h2>
-                  <h3>{`Price : ${item?.price}$`}</h3>
-
-
+              <div className="p-4  border flex flex-col w-full relative" key={item.id}>
+                <img src={item.image} className="w-full h-[300px] object-contain pb-10" alt="" />
+                <div className="hover:scale-105 transition-all absolute top-[25px] right-6 flex justify-center items-center bg-black text-white h-8 w-8 rounded-[50%] border border-black" onClick={() => addwish(item.id)}>{isinfav ? <FaHeart className="text-red-500" /> : <FaRegHeart className=" text-xl" />}
                 </div>
-              </NavLink>
+                <h1 className="whitespace-nowrap overflow-hidden text-ellipsis text-3xl">{item.title}</h1>
+                <h3 className='text-blue-700 font-semibold'>{`Price :- ${item.price}$`}</h3>
 
-            )
+                <h2 className="font-normal flex flex-wrap ">Description :-{item.description}</h2>
 
-          })
 
-          
+                <button onClick={() => addtocart(item.id)} className="w-[60%] m-auto bg-orange-400 hover:bg-orange-500 hover:scale-105 duration-300 py-2 rounded-md mt-4">Add to cart</button>
+              </div>
+            );
+          })}
+        </div>
+        <h1 className="text-3xl font-bold text-center">Similar Product's</h1>
+
+        <div className=" flex flex-wrap justify-evenly gap-4 my-7">
+          {
+
+            newdata.map((item) => {
+              return (
+
+
+                <NavLink to={`/product/${item?.id}`} key={item?.id}>
+                  <div className="flex flex-wrap hover:scale-105 hover:transition-all relative p-2 w-28 sm:w-40  border border-gray-300 rounded-lg whitespace-nowrap overflow-hidden text-ellipsis shadow-md hover:shadow-lg transition-shadow duration-200 " >
+                    {/* <div><h1>{`id : ${item?.id}`}</h1></div> */}
+                    <div className="">
+
+                      <img
+                        src={item?.image}
+                        className="w-full   aspect-[1/1] sm:aspect-[1/1] duration-200 overflow-hidden"
+                        alt=" img..."
+                      // key={Date.now()}
+                      />
+                    </div>
+                    <h2 className="whitespace-nowrap overflow-hidden text-ellipsis mt-3">
+                      {item?.title}
+                    </h2>
+                    <h3>{`Price : ${item?.price}$`}</h3>
+                  </div>
+                </NavLink>
+              )
+            })
+          }
+        </div>
+        {recentForUI.length >= 5 && (
+          <div>
+            <h1 className="text-3xl font-bold text-center">Recent Viwed Product</h1>
+            <div className=" flex flex-wrap justify-evenly gap-4 my-7">
+              {
+
+                recentForUI.map((item) => {
+                  return (
+
+
+                    <NavLink to={`/product/${item?.id}`} key={item?.id}>
+                      <div className="flex flex-wrap hover:scale-105 hover:transition-all relative p-2 w-28 sm:w-40  border border-gray-300 rounded-lg whitespace-nowrap overflow-hidden text-ellipsis shadow-md hover:shadow-lg transition-shadow duration-200 " >
+                        {/* <div><h1>{`id : ${item?.id}`}</h1></div> */}
+                        <div className="">
+
+                          <img
+                            src={item?.image}
+                            className="w-full   aspect-[1/1] sm:aspect-[1/1] duration-200 overflow-hidden"
+                            alt=" img..."
+                          // key={Date.now()}
+                          />
+                        </div>
+                        <h2 className="whitespace-nowrap overflow-hidden text-ellipsis mt-3">
+                          {item?.title}
+                        </h2>
+                        <h3>{`Price : ${item?.price}$`}</h3>
+                      </div>
+                    </NavLink>
+                  )
+                })
+              }
+            </div>
+          </div>)
         }
-      </div>
 
 
-
-    </div >
-        </>
+      </div >
+    </>
   )
 }
 
